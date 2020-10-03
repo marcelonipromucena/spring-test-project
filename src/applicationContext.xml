@@ -7,14 +7,23 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
     
-    
-    
-    <bean id="myCoach" class="com.luv2code.springdemo.FootballCoach">
-    	<constructor-arg ref="myFortune" />
+     
+    <bean id="myFortuneService" class="com.luv2code.springdemo.HappyFortuneService">
     </bean>
     
-    <bean id="myFortune" class="com.luv2code.springdemo.HappyFortuneService">
+    <bean id="myCoach" class="com.luv2code.springdemo.TrackCoach">
+    	<constructor-arg ref="myFortuneService" />
     </bean>
+   
+   <bean id="myCricketCoach" class="com.luv2code.springdemo.CricketCoach">
+   		<property name="fortuneService" ref="myFortuneService" />
+   		
+   		<!-- inject literal values -->
+   		   		<property name="emailAddress" value="markill123@gmail.com" />
+   		
+   		   		<property name="team" ref="myFortuneService" />
+   		
+   </bean>
     
     
 </beans>
